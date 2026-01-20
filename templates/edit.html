@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as forms %}
+
+{% block title %}{% if product %}Upravit produkt{% else %}Přidat produkt{% endif %}{% endblock %}
+{% block content %}
+    <div class="card">
+        <form method="post">
+            {{ form.hidden_tag() }}
+            {{ forms.render_field(form.name, 'Název produktu') }}
+            {{ forms.render_field(form.price, 'Cena v CZK') }}
+            {{ forms.render_field(form.dph, 'DPH') }}
+            {{ forms.render_field(form.description, 'Krátký popis') }}
+            <div class="form-row">
+                <button class="button" type="submit">Uložit</button>
+                <a class="button success" href="{{ url_for('index') }}">Zpět</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}
